@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-   <div class="container">
       <div class="col-md-offset-2 col-md-8">
          <form action="" class="postedit">
 
@@ -26,7 +25,6 @@
          <!-- Summernote text editor -->
          <div id="summernote"></div>
       </div>
-   </div>
 @endsection
 
 @section('scripts')

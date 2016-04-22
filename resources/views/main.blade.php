@@ -12,9 +12,15 @@
 
    @include ('partials/_nav')
 
-   @yield('content')
+   <div class="container">
 
-   @include('partials/_footer')
+      @include('partials/_messages')
+
+      @yield('content')
+
+      @include('partials/_footer')
+
+   </div>
 
    @include('partials/_javascript')
 

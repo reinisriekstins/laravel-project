@@ -9,7 +9,6 @@
 @endsection
 
 @section('content')
-   <div class="container">
       <div class="col-md-offset-2 col-md-8">
          <h1>Create New Post</h1>
          <hr>
@@ -26,7 +25,6 @@
          <!-- Summernote text editor -->
          <!--div id="summernote"></div-->
       </div>
-   </div>
 @endsection
 
 @section('scripts')

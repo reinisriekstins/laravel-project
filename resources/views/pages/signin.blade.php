@@ -3,7 +3,6 @@
 @section('title', " | Sign In")
 
 @section('content')
-   <div class="container" id="container1">
       <form class="form-signin">
          <h2 class="form-signin-heading">Please sign in</h2>
 
@@ -15,5 +14,4 @@
          <input type="submit" value="Sign In" class="btn btn-default btn-block btn-lg">
          </div>
       </form>
-   </div>
 @endsection

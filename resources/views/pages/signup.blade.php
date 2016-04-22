@@ -4,7 +4,6 @@
 
 
 @section('content')
-   <div class="container" id="container1">
       <form class="form-signin">
             <h2 class="form-signin-heading">Fill in all of the fields</h2>
             <input type="text" name="first_name" id="first_name" class="form-control input" placeholder="First Name">
@@ -20,5 +19,4 @@
             <input type="submit" value="Create account" class="btn btn-default btn-block btn-lg">
 
       </form>
-   </div>
 @endsection
