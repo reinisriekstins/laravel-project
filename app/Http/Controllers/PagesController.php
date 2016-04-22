@@ -26,4 +26,7 @@ class PagesController extends Controller {
    public function getBlogpost() {
       return view('pages/blogpost');
    }
+   public function getPosteditor() {
+      return view('pages/posteditor');
+   }
 }

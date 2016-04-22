@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
    @include('partials/_head')
+
+   @yield('stylesheets')
+
+   @include('partials/_stylesheets')
 </head>
 
 <body>

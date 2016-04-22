@@ -3,10 +3,6 @@
 
 @section('title', " | Home")
 
-@section('stylesheet')
-   <link rel="stylesheet" type="text/css" href="styles.css">
-@endsection
-
 @section('content')
 <!-- Login form -->
 <div class="container">
@@ -21,8 +17,4 @@
       </div>
    </div>
 </div>
-@endsection
-
-@section('scripts')
-   <script src="js/scripts.js"></script>
 @endsection
