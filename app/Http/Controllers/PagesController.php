@@ -20,9 +20,6 @@ class PagesController extends Controller {
    public function getSignin() {
       return view('pages/signin');
    }
-   public function getBlog() {
-      return view('pages/blog');
-   }
    public function getBlogpost() {
       return view('pages/blogpost');
    }

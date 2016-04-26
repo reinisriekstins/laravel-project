@@ -14,6 +14,11 @@ body {
 footer {
     text-align: center;
 }
+
+.btn-margin-top {
+   margin-top: 18px;
+}
+
 .title {
     text-align: center;
     font-size: 96px;

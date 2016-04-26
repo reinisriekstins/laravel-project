@@ -18,7 +18,6 @@ Route::group(['middleware' => ['web']], function () {
 
    Route::get('posteditor', 'PagesController@getPosteditor');
    Route::get('blogpost', 'PagesController@getBlogpost');
-   Route::get('blog', 'PagesController@getBlog');
    Route::get('signup', 'PagesController@getSignup');
    Route::get('signin', 'PagesController@getSignin');
    Route::get('bootstrap', 'PagesController@getBootstrap');
