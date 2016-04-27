@@ -19,7 +19,7 @@
             {{ Form::label('body', 'Body: ') }}
             {{ Form::textarea('body', null, array('class' => 'form-control', 'required' => '')) }}
 
-            {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block')) }}
+            {{ Form::submit('Create Post', array('class' => 'btn btn-success btn-lg btn-block btn-margin-top')) }}
          {!! Form::close() !!}
          <hr>
          <!-- Summernote text editor -->

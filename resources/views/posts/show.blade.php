@@ -17,10 +17,19 @@
                 <p class="lead">
                     by <a href="#">Start Bootstrap</a>
                 </p>
-                {!! Html::linkRoute('posts.edit', 'Edit Post', array($post->id), array('class' => 'btn btn-primary')) !!}
-                {!! Html::linkRoute('posts.destroy', 'Delete Post', array($post->id), array('class' => 'btn btn-danger')) !!}
+               <div class="row">
+                  <div class="col-md-2">
+                     {!! Html::linkRoute('posts.edit', 'Edit Post', array($post->id), array('class' => 'btn btn-primary btn-block')) !!}
+                  </div>
+                  <div class="col-md-2">
+                     {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
 
-                <hr>
+                     {!! Form::submit('Delete Post', ['class' => 'btn btn-danger btn-block']) !!}
+
+                     {!! Form::close() !!}
+                  </div>
+               </div>
+               <hr>
 
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time">
@@ -31,7 +40,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">
+                <p align="justify" class="lead">
                   {{ $post->body }}
                 </p>
 

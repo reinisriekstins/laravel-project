@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         // creates a variable and stores all the blog posts in it
-         $posts = Post::all();
+         $posts = Post::orderBy('id', 'desc')->paginate(5);
         // returns a view and passes the created variable
         return view('posts.index')->withPosts($posts);
     }
@@ -121,6 +121,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+      // deletes the post
+      $post = Post::find($id);
+      $post->delete();
+
+      // displays success message
+      Session::flash('success', 'The post was successfully deleted!');
+      // redirects to posts index
+      return redirect()->route('posts.index', $post->id);
     }
 }

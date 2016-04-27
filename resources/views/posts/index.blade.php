@@ -8,34 +8,35 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
+               <div class="row">
+                  <div class="col-sm-9">
+                     <h1 class="page-header">
+                         Blog Author
+                         <small>All blog posts</small>
+                     </h1>
+                  </div>
+                  <div class="col-sm-3">
+                     <a href="/posts/create" class="btn btn-primary btn-block btn-lg page-header">Create Post</a>
+                  </div>
+               </div>
 
-                <h1 class="page-header">
-                    ?Blog Author?
-                    <small>All blog posts</small>
-                </h1>
 
                 <!-- Blog Posts -->
                 @foreach ($posts as $post)
                 <h2>
-                    <a href="#">{{ $post->title }}</a>
+                    {{ $post->title }}
                 </h2>
                 <p><span class="glyphicon glyphicon-time"></span> {{ date('H:m M j, Y', strtotime($post->created_at)) }}</p>
 
-                <p>{{substr($post->body, 0, 300) }}{{ strlen($post->body) > 50 ? "..." : ""}}</p>
+                <p align="justify">{{substr($post->body, 0, 750) }}{{ strlen($post->body) > 50 ? "..." : ""}}</p>
                 <a class="btn btn-primary" href="/posts/{{$post->id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
                 @endforeach
 
                <hr>
 
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul>
+               <div class="text-center">
+                  {!! $posts->links() !!}
+               </div>
 
             </div>
 
