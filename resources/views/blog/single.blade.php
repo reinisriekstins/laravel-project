@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', " | View Post")
+@section('title', " | $post->title")
 
 
 @section('content')
@@ -17,7 +17,7 @@
                 <p class="lead">
                     by <a href="#">Start Bootstrap</a>
                 </p>
-               <div class="row">
+                <div class="row">
                   <div class="col-md-2">
                      {!! Html::linkRoute('posts.edit', 'Edit Post', array($post->id), array('class' => 'btn btn-primary btn-block')) !!}
                   </div>

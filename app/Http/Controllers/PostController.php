@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         // creates a variable and stores all the blog posts in it
-         $posts = Post::orderBy('id', 'desc')->paginate(5);
+         $posts = Post::orderBy('id', 'desc')->paginate(10);
         // returns a view and passes the created variable
         return view('posts.index')->withPosts($posts);
     }
@@ -45,6 +45,7 @@ class PostController extends Controller
          // validate the data
          $this->validate ($request, array(
             'title' => 'required|max:255',
+            'slug' => 'required|alpha-dash|min:5|max:255|unique:posts,slug',
             'body' => 'required'
          ));
 
@@ -52,12 +53,13 @@ class PostController extends Controller
          $post = new Post;
          $post->title = $request->title;
          $post->body = $request->body;
+         $post->slug = $request->slug;
          $post->save();
 
          Session::flash('success', 'The post has been successfully saved!');
 
          // redirect to another page
-         return redirect()->route('posts.show', $post->id);
+         return redirect()->route("blog.single", $post->slug);
     }
 
     /**
@@ -81,10 +83,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        // finds the post in the database and savse it as a variable
-         $post = Post::find($id);
-        // returns the view and passes the var into it
-        return view ('posts.edit')->withPost($post);
+      // finds the post in the database and savse it as a variable
+      $post = Post::find($id);
+      // returns the view and passes the var into it
+      return view ('posts.edit')->withPost($post);
     }
 
     /**
@@ -99,18 +101,20 @@ class PostController extends Controller
         // validates the data
         $this->validate ($request, array(
            'title' => 'required|max:255',
+           'slug' => 'required|alpha-dash|min:5|max:255|unique:posts,slug',
            'body' => 'required'
         ));
         // saves the data to the database
          $post = Post::find($id);
          $post->title = $request->input('title');
          $post->body = $request->input('body');
+         $post->slug = $request->input('slug');
          $post->save();
         //sets flash data with success message
         Session::flash('success', 'This post has been succesfully saved!');
 
         //redirects with flash data to posts.show
-        return redirect()->route('posts.show', $post->id);
+        return redirect()->route('blog.single', $post->plug);
     }
 
     /**

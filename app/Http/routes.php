@@ -16,12 +16,12 @@ Route::resource('posts', 'PostController');
 
 Route::group(['middleware' => ['web']], function () {
 
-   Route::get('posteditor', 'PagesController@getPosteditor');
-   Route::get('blogpost', 'PagesController@getBlogpost');
+   Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
    Route::get('signup', 'PagesController@getSignup');
    Route::get('signin', 'PagesController@getSignin');
    Route::get('bootstrap', 'PagesController@getBootstrap');
    Route::get('/', 'PagesController@getIndex');
+
 
    //Route::get('posts/create', 'PostController@create');
 });
