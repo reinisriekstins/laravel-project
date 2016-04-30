@@ -13,15 +13,23 @@
 
 Route::resource('posts', 'PostController');
 
+// authentication routes
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::group(['middleware' => ['web']], function () {
-
-   Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
-   Route::get('signup', 'PagesController@getSignup');
-   Route::get('signin', 'PagesController@getSignin');
-   Route::get('bootstrap', 'PagesController@getBootstrap');
-   Route::get('/', 'PagesController@getIndex');
+// registration routes
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-   //Route::get('posts/create', 'PostController@create');
-});
+
+// blog routes
+Route::get('blog', ['uses' => 'BlogController@getIndex', 'as' => 'blog.index']);
+Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
+
+// pages routes
+Route::get('signup', 'PagesController@getSignup');
+Route::get('signin', 'PagesController@getSignin');
+Route::get('bootstrap', 'PagesController@getBootstrap');
+Route::get('/', 'PagesController@getIndex');

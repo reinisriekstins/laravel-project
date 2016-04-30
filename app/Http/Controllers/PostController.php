@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Session;
+use Validate;
 
 class PostController extends Controller
 {
@@ -48,6 +49,7 @@ class PostController extends Controller
             'slug' => 'required|alpha-dash|min:5|max:255|unique:posts,slug',
             'body' => 'required'
          ));
+
 
          // store in the database
          $post = new Post;
@@ -98,12 +100,22 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // validates the data
-        $this->validate ($request, array(
-           'title' => 'required|max:255',
-           'slug' => 'required|alpha-dash|min:5|max:255|unique:posts,slug',
-           'body' => 'required'
-        ));
+         // validates the data
+         $post = Post::find($id);
+         if ($request->input('slug') == $post->slug) {
+            $this->validate ($request, array(
+               'title' => 'required|max:255',
+               'body' => 'required'
+            ));
+         }
+         else {
+            $this->validate ($request, array(
+               'title' => 'required|max:255',
+               'slug' => 'required|alpha-dash|min:5|max:255|unique:posts,slug',
+               'body' => 'required'
+            ));
+         }
+
         // saves the data to the database
          $post = Post::find($id);
          $post->title = $request->input('title');
@@ -114,7 +126,7 @@ class PostController extends Controller
         Session::flash('success', 'This post has been succesfully saved!');
 
         //redirects with flash data to posts.show
-        return redirect()->route('blog.single', $post->plug);
+        return redirect()->route('blog.single', $post->slug);
     }
 
     /**

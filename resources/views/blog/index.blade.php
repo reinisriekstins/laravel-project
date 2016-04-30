@@ -1,7 +1,7 @@
 
 @extends('main')
 
-@section('title', " | Posts")
+@section('title', " | Blog")
 
 @section('content')
         <div class="row">

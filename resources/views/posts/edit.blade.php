@@ -10,7 +10,7 @@
 
 @section('content')
       <div class="col-md-offset-2 col-md-8">
-         <h1>Create New Post</h1>
+         <h1>Edit Post</h1>
          <hr>
          {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'data-parsley-validate' => '']) !!}
             {{ Form::label('title', 'Title: ') }}
